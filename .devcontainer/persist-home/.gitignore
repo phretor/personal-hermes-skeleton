@@ -1,0 +1,7 @@
+# This directory is a local persisted HOME for the devcontainer.
+# Ignore runtime state and secrets by default.
+*
+
+# Keep documentation and ignore rules visible if this vault is ever committed.
+!.gitignore
+!README.md

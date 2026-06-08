@@ -1,0 +1,7 @@
+# This directory is a local persisted /workspace for the devcontainer.
+# Ignore scratch / intermediate output by default.
+*
+
+# Keep documentation and ignore rules visible if this vault is ever committed.
+!.gitignore
+!README.md

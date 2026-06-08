@@ -1,0 +1,21 @@
+#!/bin/bash
+# PostToolUse hook: log vault content edits to today's daily note.
+# Skips .claude/, .brain/, and the daily note itself.
+#
+# Install: register with Hermes as a PostToolUse hook for file-write tools.
+# The hook receives the tool call JSON on stdin.
+#
+# CWD is assumed to be the vault root (e.g. /data inside the Hermes container).
+
+f=$(jq -r '.tool_response.filePath // .tool_input.file_path // empty')
+daily="30 - Daily/$(date +%Y)/$(date +%Y-%m)/$(date +%Y-%m-%d).md"
+
+if [ -n "$f" ] \
+   && ! echo "$f" | grep -q '/\.claude/' \
+   && ! echo "$f" | grep -q '/\.brain/' \
+   && ! echo "$f" | grep -qF "$daily"; then
+  label=$(echo "$f" | awk -F/ '{print $(NF-1)"/"$NF}')
+  echo "- $(date +%H:%M) — Modified $label" >> "$daily" 2>/dev/null
+fi
+
+echo '{"suppressOutput":true}'

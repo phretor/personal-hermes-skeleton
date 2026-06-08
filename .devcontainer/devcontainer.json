@@ -1,0 +1,27 @@
+{
+  "name": "Notes hermes sandbox",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/data",
+  "containerUser": "hermes",
+  "remoteUser": "hermes",
+  "updateRemoteUserUID": true,
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer/persist-home,target=/opt/data,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/persist-workspace,target=/workspace,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder},target=/data,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# This repo is the public skeleton of a personal Hermes setup.
+# Each PARA+JD folder has one or more anonymized sample .md files; the
+# rest of any vault content stays private.
+
+# .agent — keep README, anonymized skills only
+# .agent/skills/*
+# !.agent/skills/README.md
+
+# .brain — keep README + example hook; live caches stay private
+# .brain/*
+# !.brain/README.md
+# !.brain/timeline-hook.sh.example
+
+# Obsidian + sync artifacts
+.obsidian/
+.stfolder/
+.stignore
+.trash/
+.DS_Store
+._*
+SCRATCH.md
+
+# Local-only / personal scripts
+scripts/
+
+# Container runtime state — never commit
+# .devcontainer/persist-home/*
+# !.devcontainer/persist-home/.gitignore
+# !.devcontainer/persist-home/README.md
+# .devcontainer/persist-workspace/*
+# !.devcontainer/persist-workspace/.gitignore
+# !.devcontainer/persist-workspace/README.md
+
+# Env / secrets
+.env
+*.env.local
